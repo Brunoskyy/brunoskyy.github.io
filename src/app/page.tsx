@@ -4,6 +4,7 @@ import { ExperienceRow } from '@/components/experience-row'
 import { ProjectCard } from '@/components/project-card'
 import { RepoRow } from '@/components/repo-row'
 import { Section } from '@/components/section'
+import { ThemeToggle } from '@/components/theme-toggle'
 import { experience, featured, otherWork, profile } from '@/data/projects'
 import { loadProjects, loadRepos } from '@/lib/github'
 
@@ -21,33 +22,36 @@ export default async function Home() {
       </a>
 
       <header className="flex items-center justify-between py-6 text-sm">
-        <Link href="/" className="font-medium">
+        <Link href="/" className="font-medium whitespace-nowrap">
           {profile.name}
         </Link>
-        <nav aria-label="Sections">
-          <ul className="text-muted flex gap-5">
-            <li>
-              <a href="#featured" className="hover:text-ink">
-                Work
-              </a>
-            </li>
-            <li>
-              <a href="#experience" className="hover:text-ink">
-                Experience
-              </a>
-            </li>
-            <li>
-              <a href="#other" className="hover:text-ink">
-                Older
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="hover:text-ink">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <div className="flex items-center gap-3 sm:gap-5">
+          <nav aria-label="Sections">
+            <ul className="text-muted flex gap-3 sm:gap-5">
+              <li>
+                <a href="#featured" className="hover:text-ink">
+                  Work
+                </a>
+              </li>
+              <li>
+                <a href="#experience" className="hover:text-ink">
+                  Experience
+                </a>
+              </li>
+              <li>
+                <a href="#other" className="hover:text-ink">
+                  Older
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-ink">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <ThemeToggle />
+        </div>
       </header>
 
       <main>

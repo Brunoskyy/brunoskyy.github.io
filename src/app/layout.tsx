@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import { Fraunces, IBM_Plex_Mono, Instrument_Sans } from 'next/font/google'
 
 import { profile } from '@/data/projects'
+import { THEME_BOOT_SCRIPT } from '@/lib/theme'
 
 import './globals.css'
 
@@ -41,7 +42,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${instrument.variable} ${plexMono.variable}`}>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${instrument.variable} ${plexMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
+      </head>
       <body>{children}</body>
     </html>
   )

@@ -15,8 +15,13 @@
   color-scheme: light;
 }
 
+/*
+  Three states: an explicit choice on <html data-theme>, or none, which
+  follows the system. The same dark tokens are written twice so that an
+  explicit "light" wins over a dark system and vice versa.
+*/
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --bg: #131110;
     --surface: #1b1816;
     --ink: #ece5d8;
@@ -26,6 +31,17 @@
     --accent-ink: #1b1917;
     color-scheme: dark;
   }
+}
+
+:root[data-theme='dark'] {
+  --bg: #131110;
+  --surface: #1b1816;
+  --ink: #ece5d8;
+  --muted: #a49c8e;
+  --line: #2e2a26;
+  --accent: #e6905f;
+  --accent-ink: #1b1917;
+  color-scheme: dark;
 }
 
 @theme inline {

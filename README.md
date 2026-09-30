@@ -43,5 +43,7 @@ then `actions/deploy-pages`. The repository's Pages source has to be set to
 
 Warm paper background, ink text, one terracotta accent, and Fraunces for
 headings with its optical size and softness axes set. Light and dark follow
-the system preference. Reduced motion is respected and everything is reachable
+the system until you pick one with the button in the header; the choice is
+kept in localStorage and applied by a tiny script in `<head>` before the
+first paint, so there is no flash of the wrong theme. Reduced motion is respected and everything is reachable
 by keyboard, including a skip link.
