@@ -105,20 +105,6 @@ export function ProjectCard({ project }: { project: ProjectView }) {
             />
           </figure>
         )}
-        {project.terminal && (
-          <figure className="frame terminal" aria-label={`Terminal session with ${project.name}`}>
-            <pre className="m-0 overflow-x-auto p-4 font-mono text-[12.5px] leading-relaxed">
-              {project.terminal.map((line, i) => (
-                <span
-                  key={i}
-                  className={line.startsWith('$') ? 'text-ink block' : 'text-muted block'}
-                >
-                  {line || ' '}
-                </span>
-              ))}
-            </pre>
-          </figure>
-        )}
       </div>
     </article>
   )

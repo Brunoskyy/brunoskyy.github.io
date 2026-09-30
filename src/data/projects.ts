@@ -21,8 +21,6 @@ export interface Project {
   logo?: string
   /** A screenshot under public/, with its alt text. */
   image?: { src: string; alt: string; width: number; height: number }
-  /** For tools without a screen: lines of terminal output to render instead. */
-  terminal?: string[]
 }
 
 export const featured: Project[] = [
@@ -41,30 +39,6 @@ export const featured: Project[] = [
       width: 1400,
       height: 867,
     },
-  },
-  {
-    repo: 'git-retime',
-    name: 'git-retime',
-    description:
-      'A command line tool that audits and repairs commit dates through git plumbing: wrong clocks, wrong zones, migrations from other systems, folders that were never versioned. Every rewrite has an undo.',
-    interesting:
-      'Objects are rewritten byte for byte except for the two date lines, and refs move in one transaction after the backup refs exist.',
-    stack: ['TypeScript', 'Node', 'git plumbing', 'vitest', '76 tests'],
-    private: true,
-    logo: '/projects/git-retime-logo.svg',
-    terminal: [
-      '$ git retime audit',
-      '16 commits, 2026-09-15 to 2026-09-15. Zones: -03:00 (16).',
-      '3 findings: 3 same-second.',
-      '',
-      '  a5c3365  same-second  Stop reporting an unbucketable context',
-      '  34ced92  same-second  Fix two ways the condition editor showed',
-      '  3ec22b6  same-second  Add /onboarding and fix three smaller',
-      '',
-      '$ git retime shift --by -3h HEAD~3..HEAD --dry-run',
-      'Would rewrite 3 commits: 3 with new dates, 0 following a',
-      'rewritten parent. 1 ref to move.',
-    ],
   },
   {
     repo: 'tandem',

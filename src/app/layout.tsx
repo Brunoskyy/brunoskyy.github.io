@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(profile.url),
   title: `${profile.name}, frontend engineer`,
   description:
-    'React and TypeScript work by Artur Bruno: feature flags with a real targeting engine, a git tool built on plumbing, a realtime board, and the products I have shipped.',
+    'React and TypeScript work by Artur Bruno: feature flags with a real targeting engine, a realtime collaborative board, and the products I have shipped.',
   openGraph: {
     title: `${profile.name}, frontend engineer`,
     description: 'React and TypeScript, built to hold up under load and under review.',
