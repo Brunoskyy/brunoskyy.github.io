@@ -115,6 +115,25 @@ body {
   text-decoration-thickness: 2px;
 }
 
+/* Paired screenshots: one per theme, following the same rule as the tokens. */
+.theme-dark-only {
+  display: none;
+}
+:root[data-theme='dark'] .theme-dark-only {
+  display: block;
+}
+:root[data-theme='dark'] .theme-light-only {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .theme-dark-only {
+    display: block;
+  }
+  :root:not([data-theme='light']) .theme-light-only {
+    display: none;
+  }
+}
+
 /* Screenshots sit in a thin frame that reads as a window, not a photo. */
 .frame {
   margin: 0;

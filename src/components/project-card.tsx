@@ -101,8 +101,18 @@ export function ProjectCard({ project }: { project: ProjectView }) {
               width={project.image.width}
               height={project.image.height}
               sizes="(min-width: 768px) 520px, 100vw"
-              className="block h-auto w-full"
+              className={`block h-auto w-full ${project.imageDark ? 'theme-light-only' : ''}`}
             />
+            {project.imageDark && (
+              <Image
+                src={project.imageDark}
+                alt={project.image.alt}
+                width={project.image.width}
+                height={project.image.height}
+                sizes="(min-width: 768px) 520px, 100vw"
+                className="theme-dark-only block h-auto w-full"
+              />
+            )}
           </figure>
         )}
       </div>

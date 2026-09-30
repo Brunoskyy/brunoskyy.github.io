@@ -21,6 +21,8 @@ export interface Project {
   logo?: string
   /** A screenshot under public/, with its alt text. */
   image?: { src: string; alt: string; width: number; height: number }
+  /** Same shot in the dark theme, same size. Shown instead of `image` when the page is dark. */
+  imageDark?: string
 }
 
 export const featured: Project[] = [
@@ -55,6 +57,58 @@ export const featured: Project[] = [
       width: 1280,
       height: 760,
     },
+  },
+  {
+    repo: 'hookline',
+    name: 'Hookline',
+    description:
+      'Webhook delivery as a service: accept events, fan them out to subscriber endpoints, sign every request, retry with backoff, dead-letter what never lands, and show each attempt on a timeline.',
+    interesting:
+      'A Postgres queue on SELECT … FOR UPDATE SKIP LOCKED with leases, so a crashed worker’s deliveries come back on their own; the same interface runs on SQS in the AWS deployment.',
+    stack: [
+      'Python 3.13',
+      'FastAPI',
+      'SQLAlchemy 2',
+      'Postgres',
+      'htmx',
+      'AWS Lambda + SQS',
+      'Terraform',
+      '77 tests',
+    ],
+    logo: '/projects/hookline-logo.svg',
+    image: {
+      src: '/projects/hookline.jpg',
+      alt: 'A delivery in Hookline: two failed attempts with their backoff, then a 200, next to the signed payload',
+      width: 1400,
+      height: 897,
+    },
+    imageDark: '/projects/hookline-dark.jpg',
+  },
+  {
+    repo: 'pulse',
+    name: 'Pulse',
+    description:
+      'An uptime monitor in one Go binary: HTTP, TCP, DNS and certificate checks on a schedule, incidents that open and resolve on their own, and a public status page with 90 days of history.',
+    interesting:
+      'Uptime is weighted by time, not by probe count, so a burst of fast failures cannot outweigh hours of history, and a restart replays recent results instead of forgetting a failure streak.',
+    stack: [
+      'Go',
+      'net/http',
+      'SQLite (pure Go)',
+      'html/template',
+      'Prometheus',
+      'AWS ECS Fargate',
+      'Terraform',
+      '50 tests',
+    ],
+    logo: '/projects/pulse-logo.svg',
+    image: {
+      src: '/projects/pulse.jpg',
+      alt: 'The Pulse status page: overall status, then each service with a 90-day bar strip, uptime and p95 latency',
+      width: 1280,
+      height: 820,
+    },
+    imageDark: '/projects/pulse-dark.jpg',
   },
 ]
 
