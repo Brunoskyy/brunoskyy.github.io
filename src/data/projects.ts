@@ -43,10 +43,10 @@ export const featured: Project[] = [
     repo: 'tandem',
     name: 'Tandem',
     description:
-      'A realtime collaborative board. Several people on the same canvas with live cursors, presence and conflict-free edits.',
-    interesting: 'In progress. The interesting part will be how concurrent edits converge.',
-    stack: ['React', 'TypeScript', 'WebSockets'],
-    wip: true,
+      'A realtime board for retros and brainstorms: sticky notes, votes and live cursors for everyone with the link. People write in private first, then the board is revealed and the result exports as markdown.',
+    interesting:
+      'No CRDT library. Every change is an op, the server orders them, and each client replays its own unconfirmed ops on top of the confirmed state, so edits show up instantly and survive a dropped connection.',
+    stack: ['React 19', 'TypeScript', 'WebSockets', 'Node 24', 'SQLite', '43 tests'],
   },
 ]
 
@@ -60,22 +60,27 @@ export interface OlderRepo {
  * Older public repositories listed under "Older work". Language and last push
  * come from GitHub at build time; the order here is the order on the page.
  *
- * TODO: revise this list after going through the old repositories.
+ * Chosen for how much of the code is mine rather than a course's.
  */
 export const otherWork: OlderRepo[] = [
   {
-    repo: 'Be-The-Hero',
+    repo: 'BankAppOficial',
     description:
-      'Full app from a Rocketseat week: Node API, React web and React Native, for NGOs that rescue animals.',
+      'A bank dashboard from a hiring challenge: login, transactions, a three-step payroll wizard, all against a mocked API.',
   },
-  { repo: 'jamstack', description: 'A blog on Next.js and a headless CMS, statically generated.' },
+  {
+    repo: 'greenMile-Challenge',
+    description:
+      'Hiring test: look up a GitHub user, put their location on a map, list what they starred. React with Testing Library.',
+  },
+  {
+    repo: 'jamstack',
+    description: 'A blog on Next.js and Prismic, statically generated, with reading time.',
+  },
   {
     repo: 'svg-ceara_scale',
-    description: 'An SVG map of Ceará with a scale, for infographics and charts.',
-  },
-  {
-    repo: 'react-next-boilerplate',
-    description: 'The Next.js starter I used before create-next-app caught up.',
+    description:
+      'A choropleth of Ceará in plain SVG and JavaScript: color the municipalities from a JSON file, get a legend for free.',
   },
 ]
 
