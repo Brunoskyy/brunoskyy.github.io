@@ -103,6 +103,72 @@ export const otherWork: OlderRepo[] = [
   },
 ]
 
+export interface Experience {
+  company: string
+  product: string
+  role: string
+  /** What the product is, one sentence. */
+  about: string
+  /** What I did there, one or two sentences. */
+  did: string
+  /** Free-form period; left out when not stated. */
+  period?: string
+  logo?: string
+  /** A monogram to draw when there is no logo. */
+  monogram?: string
+  links: Array<{ label: string; href: string }>
+  current?: boolean
+}
+
+/** Places I've worked, most recent first. */
+export const experience: Experience[] = [
+  {
+    company: 'Paciolan',
+    product: 'Back-office ticketing platform',
+    role: 'Frontend engineer, through FullstackLabs',
+    about:
+      'Ticketing and fundraising software used by universities and venues across the United States.',
+    did: 'Moving legacy back-office screens to React and TypeScript, one screen at a time, with the validation rules and edge cases the old system had accumulated over decades.',
+    monogram: 'P',
+    links: [{ label: 'paciolan.com', href: 'https://www.paciolan.com' }],
+    current: true,
+  },
+  {
+    company: 'meutudo',
+    product: 'Credit app for CLT and INSS workers',
+    role: 'Frontend and mobile developer',
+    about:
+      'A Brazilian fintech where people simulate and take FGTS advances, payroll loans and credit cards from their phone, without a branch or a phone call. Rated 4.2 by 39 thousand people on the App Store.',
+    did: 'Frontend and mobile developer on the app and its web flows: the screens where someone finds out what they can borrow and gets to the end of the contract on their own.',
+    logo: '/work/meutudo.png',
+    links: [
+      {
+        label: 'Google Play',
+        href: 'https://play.google.com/store/apps/details?id=br.com.meutudo',
+      },
+      {
+        label: 'App Store',
+        href: 'https://apps.apple.com/br/app/meutudo-empr%C3%A9stimos-clt-fgts/id1375736043',
+      },
+    ],
+  },
+  {
+    company: 'GreenMile',
+    product: 'Descartes GreenMile, last-mile logistics',
+    role: 'Frontend developer',
+    about:
+      'A cloud platform for route planning and live tracking of deliveries, used by drivers, dispatchers and supervisors. Now part of Descartes.',
+    did: 'Frontend developer on the web product, in React: the screens dispatchers and supervisors keep open all day.',
+    monogram: 'G',
+    links: [
+      {
+        label: 'descartes.com/greenmile',
+        href: 'https://www.descartes.com/br/lp/descartes-greenmile',
+      },
+    ],
+  },
+]
+
 export const profile = {
   login: 'Brunoskyy',
   name: 'Artur Bruno',
