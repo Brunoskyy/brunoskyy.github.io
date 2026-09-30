@@ -99,6 +99,21 @@ body {
   text-decoration-thickness: 2px;
 }
 
+/* Screenshots sit in a thin frame that reads as a window, not a photo. */
+.frame {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow:
+    0 1px 2px color-mix(in srgb, var(--ink) 6%, transparent),
+    0 12px 32px -16px color-mix(in srgb, var(--ink) 25%, transparent);
+}
+.frame.terminal {
+  background: color-mix(in srgb, var(--ink) 4%, var(--surface));
+}
+
 .card-title-link::after {
   content: '';
   position: absolute;

@@ -17,6 +17,12 @@ export interface Project {
   private?: boolean
   /** True while still being built. */
   wip?: boolean
+  /** Small mark shown next to the title, under public/. */
+  logo?: string
+  /** A screenshot under public/, with its alt text. */
+  image?: { src: string; alt: string; width: number; height: number }
+  /** For tools without a screen: lines of terminal output to render instead. */
+  terminal?: string[]
 }
 
 export const featured: Project[] = [
@@ -28,6 +34,13 @@ export const featured: Project[] = [
     interesting:
       'The evaluation engine never throws. A broken config degrades to the off variant, and the strictness lives on the write side instead.',
     stack: ['Next.js 16', 'React 19', 'TypeScript', 'Postgres', 'Prisma 7', 'Radix', '98 tests'],
+    logo: '/projects/switchboard-logo.svg',
+    image: {
+      src: '/projects/switchboard.jpg',
+      alt: 'The flags list in Switchboard, one row per flag with its state in each environment',
+      width: 1400,
+      height: 867,
+    },
   },
   {
     repo: 'git-retime',
@@ -38,6 +51,20 @@ export const featured: Project[] = [
       'Objects are rewritten byte for byte except for the two date lines, and refs move in one transaction after the backup refs exist.',
     stack: ['TypeScript', 'Node', 'git plumbing', 'vitest', '76 tests'],
     private: true,
+    logo: '/projects/git-retime-logo.svg',
+    terminal: [
+      '$ git retime audit',
+      '16 commits, 2026-09-15 to 2026-09-15. Zones: -03:00 (16).',
+      '3 findings: 3 same-second.',
+      '',
+      '  a5c3365  same-second  Stop reporting an unbucketable context',
+      '  34ced92  same-second  Fix two ways the condition editor showed',
+      '  3ec22b6  same-second  Add /onboarding and fix three smaller',
+      '',
+      '$ git retime shift --by -3h HEAD~3..HEAD --dry-run',
+      'Would rewrite 3 commits: 3 with new dates, 0 following a',
+      'rewritten parent. 1 ref to move.',
+    ],
   },
   {
     repo: 'tandem',
@@ -46,7 +73,14 @@ export const featured: Project[] = [
       'A realtime board for retros and brainstorms: sticky notes, votes and live cursors for everyone with the link. People write in private first, then the board is revealed and the result exports as markdown.',
     interesting:
       'No CRDT library. Every change is an op, the server orders them, and each client replays its own unconfirmed ops on top of the confirmed state, so edits show up instantly and survive a dropped connection.',
-    stack: ['React 19', 'TypeScript', 'WebSockets', 'Node 24', 'SQLite', '43 tests'],
+    stack: ['React 19', 'TypeScript', 'WebSockets', 'Node 24', 'SQLite', '52 tests'],
+    logo: '/projects/tandem-logo.svg',
+    image: {
+      src: '/projects/tandem.jpg',
+      alt: 'A Tandem board in the discussion phase, with colored notes, votes and a second person editing',
+      width: 1280,
+      height: 760,
+    },
   },
 ]
 
@@ -81,6 +115,72 @@ export const otherWork: OlderRepo[] = [
     repo: 'svg-ceara_scale',
     description:
       'A choropleth of Ceará in plain SVG and JavaScript: color the municipalities from a JSON file, get a legend for free.',
+  },
+]
+
+export interface Experience {
+  company: string
+  product: string
+  role: string
+  /** What the product is, one sentence. */
+  about: string
+  /** What I did there, one or two sentences. */
+  did: string
+  /** Free-form period; left out when not stated. */
+  period?: string
+  logo?: string
+  /** A monogram to draw when there is no logo. */
+  monogram?: string
+  links: Array<{ label: string; href: string }>
+  current?: boolean
+}
+
+/** Places I've worked, most recent first. */
+export const experience: Experience[] = [
+  {
+    company: 'Paciolan',
+    product: 'Back-office ticketing platform',
+    role: 'Frontend engineer, through FullstackLabs',
+    about:
+      'Ticketing and fundraising software used by universities and venues across the United States.',
+    did: 'Moving legacy back-office screens to React and TypeScript, one screen at a time, with the validation rules and edge cases the old system had accumulated over decades.',
+    monogram: 'P',
+    links: [{ label: 'paciolan.com', href: 'https://www.paciolan.com' }],
+    current: true,
+  },
+  {
+    company: 'meutudo',
+    product: 'Credit app for CLT and INSS workers',
+    role: 'Frontend and mobile developer',
+    about:
+      'A Brazilian fintech where people simulate and take FGTS advances, payroll loans and credit cards from their phone, without a branch or a phone call. Rated 4.2 by 39 thousand people on the App Store.',
+    did: 'Frontend and mobile developer on the app and its web flows: the screens where someone finds out what they can borrow and gets to the end of the contract on their own.',
+    logo: '/work/meutudo.png',
+    links: [
+      {
+        label: 'Google Play',
+        href: 'https://play.google.com/store/apps/details?id=br.com.meutudo',
+      },
+      {
+        label: 'App Store',
+        href: 'https://apps.apple.com/br/app/meutudo-empr%C3%A9stimos-clt-fgts/id1375736043',
+      },
+    ],
+  },
+  {
+    company: 'GreenMile',
+    product: 'Descartes GreenMile, last-mile logistics',
+    role: 'Frontend developer',
+    about:
+      'A cloud platform for route planning and live tracking of deliveries, used by drivers, dispatchers and supervisors. Now part of Descartes.',
+    did: 'Frontend developer on the web product, in React: the screens dispatchers and supervisors keep open all day.',
+    monogram: 'G',
+    links: [
+      {
+        label: 'descartes.com/greenmile',
+        href: 'https://www.descartes.com/br/lp/descartes-greenmile',
+      },
+    ],
   },
 ]
 

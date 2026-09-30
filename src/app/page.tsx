@@ -1,9 +1,10 @@
 import Link from 'next/link'
 
+import { ExperienceRow } from '@/components/experience-row'
 import { ProjectCard } from '@/components/project-card'
 import { RepoRow } from '@/components/repo-row'
 import { Section } from '@/components/section'
-import { featured, otherWork, profile } from '@/data/projects'
+import { experience, featured, otherWork, profile } from '@/data/projects'
 import { loadProjects, loadRepos } from '@/lib/github'
 
 export default async function Home() {
@@ -11,7 +12,7 @@ export default async function Home() {
   const github = `https://github.com/${profile.login}`
 
   return (
-    <div className="mx-auto max-w-3xl px-4 pb-24 sm:px-6">
+    <div className="mx-auto max-w-5xl px-4 pb-24 sm:px-6">
       <a
         href="#featured"
         className="focus:bg-surface sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:px-3 focus:py-2"
@@ -28,6 +29,11 @@ export default async function Home() {
             <li>
               <a href="#featured" className="hover:text-ink">
                 Work
+              </a>
+            </li>
+            <li>
+              <a href="#experience" className="hover:text-ink">
+                Experience
               </a>
             </li>
             <li>
@@ -57,9 +63,9 @@ export default async function Home() {
           </h1>
           <p className="text-muted mt-7 max-w-prose text-base leading-relaxed sm:text-lg">
             I work in React and TypeScript, mostly on the parts of a product where state gets
-            awkward: permissions, rule builders, optimistic updates, tables that stay fast. The
-            projects below are complete, tested and documented. Each has a line about the part worth
-            reading.
+            awkward: permissions, rule builders, optimistic updates, tables that stay fast. I have
+            shipped a consumer credit app and dispatch screens for a logistics platform; the
+            projects below are mine end to end, tested and documented.
           </p>
           <ul className="mt-8 flex gap-5 text-sm">
             <li>
@@ -75,7 +81,7 @@ export default async function Home() {
           </ul>
         </section>
 
-        <Section index="01" title="Featured" id="featured">
+        <Section index="01" title="Projects" id="featured">
           <div className="border-line border-t">
             {projects.map((p) => (
               <ProjectCard key={p.repo} project={p} />
@@ -83,7 +89,15 @@ export default async function Home() {
           </div>
         </Section>
 
-        <Section index="02" title="Older work" id="other">
+        <Section index="02" title="Experience" id="experience">
+          <ul className="border-line border-t">
+            {experience.map((e) => (
+              <ExperienceRow key={e.company} item={e} />
+            ))}
+          </ul>
+        </Section>
+
+        <Section index="03" title="Older work" id="other">
           {repos.length > 0 ? (
             <ul className="border-line border-t">
               {repos.map((r) => (
@@ -108,7 +122,7 @@ export default async function Home() {
           </p>
         </Section>
 
-        <Section index="03" title="Contact" id="contact">
+        <Section index="04" title="Contact" id="contact">
           <p className="max-w-prose text-base leading-relaxed sm:text-lg">
             Open to frontend roles, remote or in Fortaleza. The quickest way is email:{' '}
             <a href={`mailto:${profile.email}`} className="prose-link">

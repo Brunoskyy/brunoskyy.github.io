@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="git-retime">
+  <defs>
+    <linearGradient id="rt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2dd4bf"/>
+      <stop offset="1" stop-color="#0f766e"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#rt)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round">
+    <path d="M18 14 v36" opacity="0.5"/>
+    <path d="M18 24 c0 8 8 8 14 10" opacity="0.5"/>
+  </g>
+  <g fill="#ffffff">
+    <circle cx="18" cy="14" r="4.5"/>
+    <circle cx="18" cy="50" r="4.5"/>
+  </g>
+  <circle cx="42" cy="38" r="11" fill="none" stroke="#ffffff" stroke-width="3.5"/>
+  <path d="M42 31 v7 l5 3" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
