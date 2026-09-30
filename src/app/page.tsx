@@ -78,6 +78,11 @@ export default async function Home() {
               </a>
             </li>
             <li>
+              <a href={profile.linkedin} className="prose-link" rel="me noopener">
+                LinkedIn
+              </a>
+            </li>
+            <li>
               <a href={`mailto:${profile.email}`} className="prose-link">
                 Email
               </a>
@@ -131,6 +136,10 @@ export default async function Home() {
             Open to frontend roles, remote or in Fortaleza. The quickest way is email:{' '}
             <a href={`mailto:${profile.email}`} className="prose-link">
               {profile.email}
+            </a>
+            , or on{' '}
+            <a href={profile.linkedin} className="prose-link" rel="me noopener">
+              LinkedIn
             </a>
             .
           </p>

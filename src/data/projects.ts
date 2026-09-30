@@ -227,6 +227,7 @@ export const profile = {
   login: 'Brunoskyy',
   name: 'Artur Bruno',
   email: 'arturbrunoferreira@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/artur-duarte-dev/',
   location: 'Fortaleza, Brazil',
   url: 'https://brunoskyy.github.io',
 }
