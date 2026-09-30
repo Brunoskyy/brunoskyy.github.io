@@ -1,0 +1,118 @@
+@import 'tailwindcss';
+
+/*
+  Warm paper and ink, one terracotta accent. The site is a page to read, so
+  the palette stays out of the way and the type does the work.
+*/
+:root {
+  --bg: #f6f2ec;
+  --surface: #fbf9f5;
+  --ink: #1b1917;
+  --muted: #625c53;
+  --line: #d8d0c3;
+  --accent: #b4532a;
+  --accent-ink: #ffffff;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131110;
+    --surface: #1b1816;
+    --ink: #ece5d8;
+    --muted: #a49c8e;
+    --line: #2e2a26;
+    --accent: #e6905f;
+    --accent-ink: #1b1917;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-instrument);
+  --font-mono: var(--font-plex-mono);
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  min-height: 100dvh;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.display {
+  font-family: var(--font-display), Georgia, serif;
+  font-variation-settings:
+    'opsz' 144,
+    'SOFT' 30,
+    'WONK' 1;
+  letter-spacing: -0.02em;
+}
+
+.display-italic {
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-variation-settings:
+    'opsz' 48,
+    'SOFT' 60,
+    'WONK' 1;
+}
+
+/* Links in running text: underline that thickens on hover, no color jump. */
+.prose-link {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition:
+    text-decoration-color 160ms ease,
+    text-decoration-thickness 160ms ease;
+}
+.prose-link:hover {
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+}
+
+.card-title-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
