@@ -73,7 +73,7 @@ export const featured: Project[] = [
       'htmx',
       'AWS Lambda + SQS',
       'Terraform',
-      '77 tests',
+      '106 tests',
     ],
     logo: '/projects/hookline-logo.svg',
     image: {
@@ -99,7 +99,7 @@ export const featured: Project[] = [
       'Prometheus',
       'AWS ECS Fargate',
       'Terraform',
-      '50 tests',
+      '61 tests',
     ],
     logo: '/projects/pulse-logo.svg',
     image: {
