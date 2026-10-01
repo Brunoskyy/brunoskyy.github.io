@@ -59,6 +59,31 @@ export const featured: Project[] = [
     },
   },
   {
+    repo: 'cite',
+    name: 'Cite',
+    description:
+      'Ask the TanStack Query docs a question and get a streamed answer where every claim links to the exact lines it came from. When the docs do not say, it says so instead of guessing.',
+    interesting:
+      'Retrieval is measured, not assumed: an eval set of 41 questions with known sources took recall@5 from 0.66 with keyword search to 0.90 with hybrid search and a local reranker.',
+    stack: [
+      'Next.js 16',
+      'TypeScript',
+      'Claude API',
+      'pgvector',
+      'Postgres full-text',
+      'local embeddings',
+      'evals',
+    ],
+    logo: '/projects/cite-logo.svg',
+    image: {
+      src: '/projects/cite.jpg',
+      alt: 'Cite answering how to cancel a query, with numbered citations and the cited source lines highlighted',
+      width: 1400,
+      height: 988,
+    },
+    imageDark: '/projects/cite-dark.jpg',
+  },
+  {
     repo: 'hookline',
     name: 'Hookline',
     description:
