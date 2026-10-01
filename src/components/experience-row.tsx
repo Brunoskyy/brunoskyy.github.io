@@ -32,6 +32,17 @@ export function ExperienceRow({ item }: { item: Experience }) {
         {item.did && (
           <p className="mt-2 max-w-prose text-[15px] leading-relaxed sm:text-base">{item.did}</p>
         )}
+        {item.highlights && <Highlights items={item.highlights} />}
+        {item.stack && (
+          <ul
+            className="text-muted mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs"
+            aria-label="Stack"
+          >
+            {item.stack.map((s) => (
+              <li key={s}>{s}</li>
+            ))}
+          </ul>
+        )}
         <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
           {item.links.map((l) => (
             <li key={l.href}>
@@ -64,17 +75,7 @@ function EngagementBlock({ engagement: e }: { engagement: Engagement }) {
         </span>
       </div>
       <p className="text-muted mt-1 max-w-prose text-[15px] leading-relaxed">{e.about}</p>
-      <ul className="mt-3 max-w-prose space-y-2 text-[15px] leading-relaxed sm:text-base">
-        {e.highlights.map((h) => (
-          <li key={h} className="flex gap-3">
-            <span
-              aria-hidden="true"
-              className="text-accent mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-current"
-            />
-            <span>{h}</span>
-          </li>
-        ))}
-      </ul>
+      <Highlights items={e.highlights} />
       {e.diagram && <Diagram diagram={e.diagram} />}
       <ul
         className="text-muted mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs"
@@ -96,5 +97,21 @@ function EngagementBlock({ engagement: e }: { engagement: Engagement }) {
         </ul>
       )}
     </li>
+  )
+}
+
+function Highlights({ items }: { items: string[] }) {
+  return (
+    <ul className="mt-3 max-w-prose space-y-2 text-[15px] leading-relaxed sm:text-base">
+      {items.map((h) => (
+        <li key={h} className="flex gap-3">
+          <span
+            aria-hidden="true"
+            className="text-accent mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-current"
+          />
+          <span>{h}</span>
+        </li>
+      ))}
+    </ul>
   )
 }

@@ -220,6 +220,8 @@ export interface Experience {
   monogram?: string
   links: Array<{ label: string; href: string }>
   current?: boolean
+  highlights?: string[]
+  stack?: string[]
   engagements?: Engagement[]
 }
 
@@ -274,11 +276,22 @@ export const experience: Experience[] = [
         about:
           'A California marketplace for cannabis products, where a chat helps each customer find the right product for what they need.',
         highlights: [
-          'Built the storefront in Next.js on a Strapi CMS, mostly on the frontend, working closely with the Lambda backend.',
-          'Worked on the recommendation chat: a GPT agent grounded in the company’s own product documents, run on AWS Lambda and streamed to the browser over WebSockets.',
-          'Wired in Algolia for product recommendations and the Shopify integration.',
+          'Built Spark, the recommendation chat: a GPT agent grounded in the company’s own product documents, running on AWS Lambda and streamed to a React and TypeScript UI over WebSockets.',
+          'Made the site’s pages generate from the Strapi CMS through Next.js and webhooks, with content on S3 and the infrastructure in CloudFormation.',
+          'Worked on the React Native app and the website, wired in Algolia for recommendations and the Shopify integration.',
         ],
-        stack: ['Next.js', 'Strapi', 'AWS Lambda', 'WebSockets', 'OpenAI', 'Algolia', 'Shopify'],
+        stack: [
+          'Next.js',
+          'React Native',
+          'Strapi',
+          'AWS Lambda',
+          'S3',
+          'CloudFormation',
+          'WebSockets',
+          'OpenAI',
+          'Algolia',
+          'Shopify',
+        ],
         diagram: {
           kind: 'flow',
           title: 'How a recommendation reached the customer',
@@ -286,7 +299,7 @@ export const experience: Experience[] = [
             { label: 'Chat', note: 'Next.js' },
             { label: 'WebSocket' },
             { label: 'AWS Lambda' },
-            { label: 'GPT agent', note: 'product documents' },
+            { label: 'Spark agent', note: 'GPT · product documents' },
             { label: 'Recommendations', note: 'Algolia' },
           ],
           aside: [{ label: 'Catalog', note: 'Strapi · Shopify' }],
@@ -297,10 +310,15 @@ export const experience: Experience[] = [
   {
     company: 'meutudo',
     product: 'Credit app for CLT and INSS workers',
-    role: 'Frontend and mobile developer',
+    role: 'Software engineer',
+    period: 'Sep 2022 – Mar 2023',
     about:
       'A Brazilian fintech where people simulate and take FGTS advances, payroll loans and credit cards from their phone, without a branch or a phone call. Rated 4.2 by 39 thousand people on the App Store.',
-    did: 'Frontend and mobile developer on the app and its web flows: the screens where someone finds out what they can borrow and gets to the end of the contract on their own.',
+    highlights: [
+      'Built the automated service queue in the native app, over sockets, so customers waiting for support are served in turn without manual triage.',
+      'Improved the back office the support team works in: faster, more responsive, and with the queue management built in.',
+    ],
+    stack: ['React', 'React Native', 'TypeScript', 'Node.js', 'WebSockets'],
     logo: '/work/meutudo.png',
     links: [
       {
@@ -315,11 +333,17 @@ export const experience: Experience[] = [
   },
   {
     company: 'GreenMile',
-    product: 'Descartes GreenMile, last-mile logistics',
-    role: 'Frontend developer',
+    product: 'GreenMile Live, now Descartes GreenMile',
+    role: 'Software engineer',
+    period: 'Sep 2020 – Sep 2022',
     about:
-      'A cloud platform for route planning and live tracking of deliveries, used by drivers, dispatchers and supervisors. Now part of Descartes.',
-    did: 'Frontend developer on the web product, in React: the screens dispatchers and supervisors keep open all day.',
+      'A cloud platform for route planning and live tracking of deliveries, used by drivers, dispatchers and supervisors.',
+    highlights: [
+      'Led the refactor that added SAML single sign-on to GreenMile Live.',
+      'Shipped an automatic logout policy and page-level access restrictions.',
+      'Built and maintained the UI on React, Redux and Redux-Saga alongside an older Backbone codebase, with Leaflet maps and Cypress and Jest tests.',
+    ],
+    stack: ['React', 'Redux', 'Redux-Saga', 'Backbone.js', 'Leaflet', 'Cypress', 'Jest'],
     monogram: 'G',
     links: [
       {
@@ -327,6 +351,16 @@ export const experience: Experience[] = [
         href: 'https://www.descartes.com/br/lp/descartes-greenmile',
       },
     ],
+  },
+  {
+    company: 'O POVO',
+    product: 'Grupo de Comunicação O POVO',
+    role: 'Software engineer',
+    period: 'Jul 2019 – Sep 2020',
+    about: 'A newspaper and media group in Fortaleza. My first engineering job.',
+    stack: ['JavaScript', 'TypeScript'],
+    monogram: 'O',
+    links: [{ label: 'opovo.com.br', href: 'https://www.opovo.com.br' }],
   },
 ]
 
