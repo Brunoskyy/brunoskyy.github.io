@@ -59,6 +59,31 @@ export const featured: Project[] = [
     },
   },
   {
+    repo: 'rounds',
+    name: 'Rounds',
+    description:
+      'Maintenance checklists that work with no signal. A technician walks a plant, reads gauges, flags issues and takes photos; everything is kept on the phone and synced when there is a connection.',
+    interesting:
+      'When two phones edit the same round offline, a three-way merge takes what only one side changed and asks the person about the rest, instead of letting a timestamp pick a winner.',
+    stack: [
+      'React 19',
+      'TypeScript',
+      'IndexedDB',
+      'Service worker',
+      'Node 24',
+      'SQLite',
+      '35 tests',
+    ],
+    logo: '/projects/rounds-logo.svg',
+    image: {
+      src: '/projects/rounds.jpg',
+      alt: 'Rounds on a phone: a checklist with a pressure reading flagged out of range, and the sync screen asking which of two versions to keep',
+      width: 1400,
+      height: 900,
+    },
+    imageDark: '/projects/rounds-dark.jpg',
+  },
+  {
     repo: 'cite',
     name: 'Cite',
     description:
@@ -134,6 +159,31 @@ export const featured: Project[] = [
       height: 820,
     },
     imageDark: '/projects/pulse-dark.jpg',
+  },
+  {
+    repo: 'gauge',
+    name: 'Gauge',
+    description:
+      'Product analytics for a made-up SaaS: KPIs with deltas, events over time, an event explorer, weekly retention cohorts and funnels, over 300 thousand seeded events.',
+    interesting:
+      'Every number is a SQL aggregate and every chart is drawn by hand in SVG; the explorer pages through events by cursor and streams CSV exports one page at a time.',
+    stack: [
+      'Next.js 16',
+      'Postgres',
+      'Prisma 7',
+      'SQL',
+      'd3-scale',
+      'TanStack Virtual',
+      '47 tests',
+    ],
+    logo: '/projects/gauge-logo.svg',
+    image: {
+      src: '/projects/gauge.jpg',
+      alt: 'The Gauge overview: four KPI tiles with deltas, a daily events chart and events by country',
+      width: 1280,
+      height: 900,
+    },
+    imageDark: '/projects/gauge-dark.jpg',
   },
 ]
 
