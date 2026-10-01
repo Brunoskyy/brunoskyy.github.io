@@ -298,7 +298,7 @@ export const experience: Experience[] = [
           'Set up the services’ foundations: modules, DTO validation, guards, interceptors and exception filters, and a structured logger that carries a request ID across services.',
           'Provisioned each microservice on Kubernetes (EKS) with Terraform, and covered modules, services and controllers with Jest unit tests.',
           'Led the migration of the API edge from Kong to AWS API Gateway, replacing Kong’s plugins with gateway authorizers, usage plans with rate limiting, and access logging with request tracing, all in Terraform.',
-          'Rebuilding the back office: legacy UniVerse screens become React micro-frontends on Python APIs, keeping every rule the old system enforced.',
+          'Rebuilding the back office: legacy UniVerse screens become FastAPI services and React micro-frontends, converted with an agentic Claude Code workflow where I review each plan before generation and check the result against the legacy source.',
         ],
         stack: [
           'NestJS',
