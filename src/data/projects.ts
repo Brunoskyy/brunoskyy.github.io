@@ -294,11 +294,20 @@ export const experience: Experience[] = [
         about:
           'Ticketing and fundraising software used by universities and venues across the United States.',
         highlights: [
-          'Helped design the move from an Express monolith to NestJS microservices that talk over Kafka and cache in Redis.',
+          'Helped design the move from an Express monolith in JavaScript to NestJS microservices in TypeScript, talking over Kafka and caching in Redis.',
           'Led the migration of the API edge from Kong to AWS API Gateway, with the whole setup defined in Terraform.',
           'Rebuilding the back office: legacy UniVerse screens become React micro-frontends on Python APIs, keeping every rule the old system enforced.',
         ],
-        stack: ['NestJS', 'Kafka', 'Redis', 'AWS API Gateway', 'Terraform', 'React', 'Python'],
+        stack: [
+          'NestJS',
+          'TypeScript',
+          'Kafka',
+          'Redis',
+          'AWS API Gateway',
+          'Terraform',
+          'React',
+          'Python',
+        ],
         diagram: {
           kind: 'before-after',
           title: 'What changed',
@@ -308,8 +317,8 @@ export const experience: Experience[] = [
               after: { label: 'AWS API Gateway', note: 'Terraform' },
             },
             {
-              before: { label: 'Express monolith' },
-              after: { label: 'NestJS services', note: 'Kafka · Redis' },
+              before: { label: 'Express monolith', note: 'JavaScript' },
+              after: { label: 'NestJS services', note: 'TypeScript · Kafka · Redis' },
             },
             {
               before: { label: 'UniVerse back office' },
