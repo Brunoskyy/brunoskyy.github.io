@@ -57,19 +57,19 @@ export default async function Home() {
       <main>
         <section className="pt-16 sm:pt-28" aria-labelledby="intro">
           <p className="text-muted mb-5 font-mono text-xs">
-            Frontend engineer · {profile.location}
+            Senior fullstack engineer · {profile.location}
           </p>
           <h1
             id="intro"
             className="display max-w-[14ch] text-[2.6rem] leading-[1.02] text-balance sm:text-6xl"
           >
-            Interfaces that hold up under load, and under review.
+            Software that holds up under load, and under review.
           </h1>
           <p className="text-muted mt-7 max-w-prose text-base leading-relaxed sm:text-lg">
-            I work in React and TypeScript, mostly on the parts of a product where state gets
-            awkward: permissions, rule builders, optimistic updates, tables that stay fast. I have
-            shipped a consumer credit app and dispatch screens for a logistics platform; the
-            projects below are mine end to end, tested and documented.
+            I work across the stack: React and TypeScript on the front, Node, Python and Go behind
+            it, AWS underneath. Lately that means breaking a monolith into services, moving an API
+            edge to AWS, and rebuilding a legacy back office in React. The projects below are mine
+            end to end, tested and documented.
           </p>
           <ul className="mt-8 flex gap-5 text-sm">
             <li>
@@ -133,7 +133,7 @@ export default async function Home() {
 
         <Section index="04" title="Contact" id="contact">
           <p className="max-w-prose text-base leading-relaxed sm:text-lg">
-            Open to frontend roles, remote or in Fortaleza. The quickest way is email:{' '}
+            Open to senior fullstack roles, remote or in Fortaleza. The quickest way is email:{' '}
             <a href={`mailto:${profile.email}`} className="prose-link">
               {profile.email}
             </a>

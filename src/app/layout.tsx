@@ -27,11 +27,11 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(profile.url),
-  title: `${profile.name}, frontend engineer`,
+  title: `${profile.name}, senior fullstack engineer`,
   description:
     'React and TypeScript work by Artur Bruno: feature flags with a real targeting engine, a realtime collaborative board, and the products I have shipped.',
   openGraph: {
-    title: `${profile.name}, frontend engineer`,
+    title: `${profile.name}, senior fullstack engineer`,
     description: 'React and TypeScript, built to hold up under load and under review.',
     url: profile.url,
     siteName: profile.name,

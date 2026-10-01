@@ -182,6 +182,29 @@ export const otherWork: OlderRepo[] = [
   },
 ]
 
+export type DiagramStep = { label: string; note?: string }
+
+/** A small diagram drawn in HTML: either a left-to-right flow or before/after rows. */
+export type Diagram =
+  | { kind: 'flow'; title: string; steps: DiagramStep[]; aside?: DiagramStep[] }
+  | {
+      kind: 'before-after'
+      title: string
+      rows: Array<{ before: DiagramStep; after: DiagramStep }>
+    }
+
+/** One client project inside a consultancy role. */
+export interface Engagement {
+  client: string
+  period: string
+  about: string
+  highlights: string[]
+  stack: string[]
+  diagram?: Diagram
+  links?: Array<{ label: string; href: string }>
+  current?: boolean
+}
+
 export interface Experience {
   company: string
   product: string
@@ -189,7 +212,7 @@ export interface Experience {
   /** What the product is, one sentence. */
   about: string
   /** What I did there, one or two sentences. */
-  did: string
+  did?: string
   /** Free-form period; left out when not stated. */
   period?: string
   logo?: string
@@ -197,20 +220,79 @@ export interface Experience {
   monogram?: string
   links: Array<{ label: string; href: string }>
   current?: boolean
+  engagements?: Engagement[]
 }
 
 /** Places I've worked, most recent first. */
 export const experience: Experience[] = [
   {
-    company: 'Paciolan',
-    product: 'Back-office ticketing platform',
-    role: 'Frontend engineer, through FullstackLabs',
+    company: 'FullstackLabs',
+    product: 'Software consultancy',
+    role: 'Senior fullstack engineer',
+    period: 'Mar 2023 – now',
     about:
-      'Ticketing and fundraising software used by universities and venues across the United States.',
-    did: 'Moving legacy back-office screens to React and TypeScript, one screen at a time, with the validation rules and edge cases the old system had accumulated over decades.',
-    monogram: 'P',
-    links: [{ label: 'paciolan.com', href: 'https://www.paciolan.com' }],
+      'A consultancy that builds and modernizes software for US companies. I work on client teams, across the stack.',
+    monogram: 'F',
+    links: [{ label: 'fullstacklabs.co', href: 'https://www.fullstacklabs.co' }],
     current: true,
+    engagements: [
+      {
+        client: 'Paciolan',
+        period: '2024 – now',
+        about:
+          'Ticketing and fundraising software used by universities and venues across the United States.',
+        highlights: [
+          'Helped design the move from an Express monolith to NestJS microservices that talk over Kafka and cache in Redis.',
+          'Led the migration of the API edge from Kong to AWS API Gateway, with the whole setup defined in Terraform.',
+          'Rebuilding the back office: legacy UniVerse screens become React micro-frontends on Python APIs, keeping every rule the old system enforced.',
+        ],
+        stack: ['NestJS', 'Kafka', 'Redis', 'AWS API Gateway', 'Terraform', 'React', 'Python'],
+        diagram: {
+          kind: 'before-after',
+          title: 'What changed',
+          rows: [
+            {
+              before: { label: 'Kong', note: 'API edge' },
+              after: { label: 'AWS API Gateway', note: 'Terraform' },
+            },
+            {
+              before: { label: 'Express monolith' },
+              after: { label: 'NestJS services', note: 'Kafka · Redis' },
+            },
+            {
+              before: { label: 'UniVerse back office' },
+              after: { label: 'React micro-frontends', note: 'Python APIs' },
+            },
+          ],
+        },
+        links: [{ label: 'paciolan.com', href: 'https://www.paciolan.com' }],
+        current: true,
+      },
+      {
+        client: 'Jointly',
+        period: '2023 – 2024',
+        about:
+          'A California marketplace for cannabis products, where a chat helps each customer find the right product for what they need.',
+        highlights: [
+          'Built the storefront in Next.js on a Strapi CMS, mostly on the frontend, working closely with the Lambda backend.',
+          'Worked on the recommendation chat: a GPT agent grounded in the company’s own product documents, run on AWS Lambda and streamed to the browser over WebSockets.',
+          'Wired in Algolia for product recommendations and the Shopify integration.',
+        ],
+        stack: ['Next.js', 'Strapi', 'AWS Lambda', 'WebSockets', 'OpenAI', 'Algolia', 'Shopify'],
+        diagram: {
+          kind: 'flow',
+          title: 'How a recommendation reached the customer',
+          steps: [
+            { label: 'Chat', note: 'Next.js' },
+            { label: 'WebSocket' },
+            { label: 'AWS Lambda' },
+            { label: 'GPT agent', note: 'product documents' },
+            { label: 'Recommendations', note: 'Algolia' },
+          ],
+          aside: [{ label: 'Catalog', note: 'Strapi · Shopify' }],
+        },
+      },
+    ],
   },
   {
     company: 'meutudo',

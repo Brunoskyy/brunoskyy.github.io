@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og'
 import { profile } from '@/data/projects'
 
 export const dynamic = 'force-static'
-export const alt = `${profile.name}, frontend engineer`
+export const alt = `${profile.name}, senior fullstack engineer`
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -31,7 +31,8 @@ export default function Image() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
         <div style={{ fontSize: 92, lineHeight: 1, letterSpacing: -3 }}>{profile.name}</div>
         <div style={{ fontSize: 40, color: '#625c53', lineHeight: 1.2 }}>
-          Frontend engineer. React and TypeScript, built to hold up under load and under review.
+          Senior fullstack engineer. React, TypeScript and the services behind them, built to hold
+          up under load and under review.
         </div>
       </div>
       <div style={{ display: 'flex', fontSize: 26, color: '#b4532a' }}>{profile.location}</div>
