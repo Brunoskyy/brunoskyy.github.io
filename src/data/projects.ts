@@ -109,6 +109,31 @@ export const featured: Project[] = [
     imageDark: '/projects/cite-dark.jpg',
   },
   {
+    repo: 'fig',
+    name: 'Fig',
+    description:
+      'A refactor toolkit for legacy backends, built as a Claude Code plugin. It migrates a fictional 2014-style Express API to a NestJS service route by route, behind a proxy with shadow mode, and three of its eleven routes are already migrated.',
+    interesting:
+      'A route can only flip to the new service when replayed legacy traffic matches, and hooks enforce that: the agent cannot edit the legacy code, and every rule in a plan cites the legacy lines a local search index found.',
+    stack: [
+      'Claude Code plugin',
+      'TypeScript',
+      'NestJS',
+      'Express',
+      'node:sqlite',
+      'transformers.js',
+      '81 tests',
+    ],
+    logo: '/projects/fig-logo.svg',
+    image: {
+      src: '/projects/fig.jpg',
+      alt: 'A Fig parity report: the bookings-by-id route passes, with four identical cases and two accepted differences shown as diffs',
+      width: 1280,
+      height: 1086,
+    },
+    imageDark: '/projects/fig-dark.jpg',
+  },
+  {
     repo: 'hookline',
     name: 'Hookline',
     description:
