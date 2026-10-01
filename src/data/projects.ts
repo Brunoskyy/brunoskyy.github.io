@@ -33,7 +33,7 @@ export const featured: Project[] = [
       'Feature flags for several tenants at once: targeting rules, percentage rollouts per environment, roles that really restrict things, and an audit trail of who changed what.',
     interesting:
       'The evaluation engine never throws. A broken config degrades to the off variant, and the strictness lives on the write side instead.',
-    stack: ['Next.js 16', 'React 19', 'TypeScript', 'Postgres', 'Prisma 7', 'Radix', '98 tests'],
+    stack: ['Next.js 16', 'React 19', 'TypeScript', 'Postgres', 'Prisma 7', 'Radix', '128 tests'],
     logo: '/projects/switchboard-logo.svg',
     image: {
       src: '/projects/switchboard.jpg',
@@ -49,7 +49,7 @@ export const featured: Project[] = [
       'A realtime board for retros and brainstorms: sticky notes, votes and live cursors for everyone with the link. People write in private first, then the board is revealed and the result exports as markdown.',
     interesting:
       'No CRDT library. Every change is an op, the server orders them, and each client replays its own unconfirmed ops on top of the confirmed state, so edits show up instantly and survive a dropped connection.',
-    stack: ['React 19', 'TypeScript', 'WebSockets', 'Node 24', 'SQLite', '52 tests'],
+    stack: ['React 19', 'TypeScript', 'WebSockets', 'Node 24', 'SQLite', '55 tests'],
     logo: '/projects/tandem-logo.svg',
     image: {
       src: '/projects/tandem.jpg',
@@ -72,7 +72,7 @@ export const featured: Project[] = [
       'Service worker',
       'Node 24',
       'SQLite',
-      '35 tests',
+      '36 tests',
     ],
     logo: '/projects/rounds-logo.svg',
     image: {
@@ -148,7 +148,7 @@ export const featured: Project[] = [
       'htmx',
       'AWS Lambda + SQS',
       'Terraform',
-      '106 tests',
+      '110 tests',
     ],
     logo: '/projects/hookline-logo.svg',
     image: {
@@ -174,7 +174,7 @@ export const featured: Project[] = [
       'Prometheus',
       'AWS ECS Fargate',
       'Terraform',
-      '61 tests',
+      '63 tests',
     ],
     logo: '/projects/pulse-logo.svg',
     image: {
@@ -222,7 +222,8 @@ export interface OlderRepo {
  * Older public repositories listed under "Older work". Language and last push
  * come from GitHub at build time; the order here is the order on the page.
  *
- * Chosen for how much of the code is mine rather than a course's.
+ * A mix of hiring challenges and course projects; the descriptions say which
+ * is which, and which ones have been brought up to date since.
  */
 export const otherWork: OlderRepo[] = [
   {
@@ -233,7 +234,7 @@ export const otherWork: OlderRepo[] = [
   {
     repo: 'BankAppOficial',
     description:
-      'A bank dashboard from a hiring challenge: login, transactions, a three-step payroll wizard, all against a mocked API.',
+      'A bank dashboard from a hiring challenge: login, transactions, a two-step payroll wizard, all against a mocked API.',
   },
   {
     repo: 'greenMile-Challenge',
@@ -243,7 +244,7 @@ export const otherWork: OlderRepo[] = [
   {
     repo: 'jamstack',
     description:
-      'A blog on Next.js and Prismic, statically generated, with reading time. Runs on fixtures without an account.',
+      'A blog on Next.js and Prismic from a Rocketseat Ignite challenge, statically generated, with reading time. Runs on fixtures without an account.',
   },
   {
     repo: 'rocketMarket',
