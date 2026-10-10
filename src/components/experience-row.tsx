@@ -76,7 +76,7 @@ function EngagementBlock({ engagement: e }: { engagement: Engagement }) {
       </div>
       <p className="text-muted mt-1 max-w-prose text-[15px] leading-relaxed">{e.about}</p>
       <Highlights items={e.highlights} />
-      {e.diagram && <Diagram diagram={e.diagram} />}
+      {e.diagram && [e.diagram].flat().map((d) => <Diagram key={d.title} diagram={d} />)}
       <ul
         className="text-muted mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs"
         aria-label="Stack"

@@ -276,7 +276,7 @@ export interface Engagement {
   about: string
   highlights: string[]
   stack: string[]
-  diagram?: Diagram
+  diagram?: Diagram | Diagram[]
   links?: Array<{ label: string; href: string }>
   current?: boolean
 }
@@ -324,7 +324,9 @@ export const experience: Experience[] = [
           'Set up the services’ foundations: modules, DTO validation, guards, interceptors and exception filters, and a structured logger that carries a request ID across services.',
           'Provisioned each microservice on Kubernetes (EKS) with Terraform, and covered modules, services and controllers with Jest unit tests.',
           'Led the migration of the API edge from Kong to AWS API Gateway, replacing Kong’s plugins with gateway authorizers, usage plans with rate limiting, and access logging with request tracing, all in Terraform.',
-          'Rebuilding the back office: legacy UniVerse screens become FastAPI services and React micro-frontends, converted with an agentic Claude Code workflow where I review each plan before generation and check the result against the legacy source.',
+          'Rebuilding the back office: legacy UniVerse screens become FastAPI services and React micro-frontends. I take a screen from the database layer to the UI, with audit logging, the legacy validation rules, and end-to-end tests that run in CI on every deploy.',
+          'Migrated a core read service to NestJS and TypeScript, added Redis caching to its heaviest queries, and moved its SQL to prepared statements.',
+          'Moved logging in more than 15 Node.js and Java services to a shared Kafka pipeline, with log levels that change at runtime without a redeploy.',
         ],
         stack: [
           'NestJS',
@@ -337,25 +339,44 @@ export const experience: Experience[] = [
           'Jest',
           'React',
           'Python',
+          'FastAPI',
+          'Nightwatch',
         ],
-        diagram: {
-          kind: 'before-after',
-          title: 'What changed',
-          rows: [
-            {
-              before: { label: 'Kong', note: 'API edge' },
-              after: { label: 'AWS API Gateway', note: 'Authorizers · rate limits · logs' },
-            },
-            {
-              before: { label: 'Express monolith', note: 'JavaScript' },
-              after: { label: 'NestJS services', note: 'TypeScript · Kafka · Redis · EKS' },
-            },
-            {
-              before: { label: 'UniVerse back office' },
-              after: { label: 'React micro-frontends', note: 'Python APIs' },
-            },
-          ],
-        },
+        diagram: [
+          {
+            kind: 'before-after',
+            title: 'What changed',
+            rows: [
+              {
+                before: { label: 'Kong', note: 'API edge' },
+                after: { label: 'AWS API Gateway', note: 'Authorizers · rate limits · logs' },
+              },
+              {
+                before: { label: 'Express monolith', note: 'JavaScript' },
+                after: { label: 'NestJS services', note: 'TypeScript · Kafka · Redis · EKS' },
+              },
+              {
+                before: { label: 'UniVerse back office' },
+                after: { label: 'React micro-frontends', note: 'Python APIs' },
+              },
+              {
+                before: { label: 'Logs per service', note: 'files · SNS' },
+                after: { label: 'Shared Kafka log pipeline', note: 'Node.js and Java services' },
+              },
+            ],
+          },
+          {
+            kind: 'flow',
+            title: 'How a legacy screen is rebuilt',
+            steps: [
+              { label: 'Legacy screen', note: 'UniVerse' },
+              { label: 'Conversion plan', note: 'reviewed by me' },
+              { label: 'FastAPI service', note: 'audit · retries' },
+              { label: 'React micro-frontend', note: 'legacy validation' },
+              { label: 'E2E tests in CI', note: 'Nightwatch' },
+            ],
+          },
+        ],
         links: [{ label: 'paciolan.com', href: 'https://www.paciolan.com' }],
         current: true,
       },
