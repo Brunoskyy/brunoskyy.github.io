@@ -21,7 +21,7 @@ export default async function Home() {
         Skip to projects
       </a>
 
-      <header className="flex items-center justify-between py-6 text-sm">
+      <header className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-6 text-sm">
         <Link href="/" className="font-medium whitespace-nowrap">
           {profile.name}
         </Link>
