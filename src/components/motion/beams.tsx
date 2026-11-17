@@ -39,11 +39,14 @@ function measure(root: HTMLElement, mode: Mode): Seg[] {
     let x1, y1, x2, y2
     if (b.left >= a.right - 2 && Math.abs(ay - by) < 10) {
       ;[x1, y1, x2, y2] = [a.right, ay, b.left, by]
-    } else if (b.top >= a.bottom - 2 && Math.abs(a.left - b.left) < 24) {
-      // Stacked on phones: run the beam down through the ↓ arrow under the box.
+    } else if (
+      b.top >= a.bottom - 2 &&
+      Math.abs(a.left + a.width / 2 - (b.left + b.width / 2)) < 24
+    ) {
+      // Stacked on phones, centered: run the beam down through the ↓ arrow.
       const arrow = nodes[i].parentElement?.querySelector('[data-beam-arrow]')
       const r = arrow?.getBoundingClientRect()
-      const x = r && r.width > 0 ? r.left + r.width / 2 : a.left + 14
+      const x = r && r.width > 0 ? r.left + r.width / 2 : a.left + a.width / 2
       ;[x1, y1, x2, y2] = [x, a.bottom, x, b.top]
     } else {
       continue

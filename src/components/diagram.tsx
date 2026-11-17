@@ -29,7 +29,7 @@ function Node({
 }
 
 function Arrow({ turn = false }: { turn?: boolean }) {
-  // In a flow, the arrow points down on phones and right from sm up.
+  // In a flow, the arrow points down on phones (centered under the box) and right from sm up.
   return (
     <span aria-hidden="true" data-beam-arrow="" className="text-accent shrink-0 font-mono text-sm">
       {turn ? (
@@ -59,14 +59,11 @@ export function Diagram({ diagram }: { diagram: DiagramModel }) {
         <>
           <Beams mode="chain">
             <ol
-              className="flex flex-col items-start gap-2 sm:flex-row sm:flex-wrap sm:items-center"
+              className="flex flex-col items-center gap-2 sm:flex-row sm:flex-wrap sm:items-center"
               aria-label={diagram.title}
             >
               {diagram.steps.map((step, i) => (
-                <li
-                  key={step.label}
-                  className="flex flex-col items-start gap-2 pl-3 sm:flex-row sm:items-center sm:pl-0"
-                >
+                <li key={step.label} className="flex flex-col items-center gap-2 sm:flex-row">
                   <Node step={step} beamStep={i} />
                   {i < diagram.steps.length - 1 && <Arrow turn />}
                 </li>
