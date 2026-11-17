@@ -12,6 +12,9 @@
   --line: #d8d0c3;
   --accent: #b4532a;
   --accent-ink: #ffffff;
+  --grain: 0.06;
+  --grain-blend: multiply;
+  --grain-filter: none;
   color-scheme: light;
 }
 
@@ -29,6 +32,9 @@
     --line: #2e2a26;
     --accent: #e6905f;
     --accent-ink: #1b1917;
+    --grain: 0.07;
+    --grain-blend: screen;
+    --grain-filter: invert(1);
     color-scheme: dark;
   }
 }
@@ -41,6 +47,9 @@
   --line: #2e2a26;
   --accent: #e6905f;
   --accent-ink: #1b1917;
+  --grain: 0.07;
+  --grain-blend: screen;
+  --grain-filter: invert(1);
   color-scheme: dark;
 }
 
@@ -152,9 +161,95 @@ body {
   inset: 0;
 }
 
+/* The stretched link trick again, for the older-work rows. */
+.row-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+/*
+  Paper grain over the whole page (the Noise idea from ui-layouts). The
+  texture is an SVG turbulence filter in a data URI, so there is no image
+  file to load, and the layer never takes clicks.
+*/
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: var(--grain);
+  mix-blend-mode: var(--grain-blend);
+  filter: var(--grain-filter);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/*
+  Spotlight on the screenshot frame: a soft accent glow under the pointer,
+  placed by --mx and --my, which ProjectShot sets on pointer move.
+*/
+.spotlight {
+  position: relative;
+  transition:
+    translate 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 300ms ease;
+}
+.spotlight::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--accent) 22%, transparent),
+    transparent 70%
+  );
+}
+.shot-trigger:hover .spotlight,
+.shot-trigger:focus-visible .spotlight {
+  translate: 0 -3px;
+  box-shadow:
+    0 1px 2px color-mix(in srgb, var(--ink) 6%, transparent),
+    0 22px 40px -18px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.shot-trigger:hover .spotlight::after {
+  opacity: 1;
+}
+
+/*
+  Theme change: the new theme spreads in a circle from the toggle. The
+  browser's default cross-fade is turned off and ThemeToggle animates a
+  clip-path on the new snapshot instead.
+*/
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/*
+  Reveal animations write their hidden state as inline styles. Without
+  JavaScript, or with reduced motion, this puts everything back in place.
+*/
+@media (scripting: none) {
+  [data-reveal] {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
   }
   *,
   *::before,

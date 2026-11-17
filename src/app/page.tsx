@@ -1,6 +1,11 @@
 import Link from 'next/link'
 
+import { CopyEmail } from '@/components/copy-email'
 import { ExperienceRow } from '@/components/experience-row'
+import { Reveal } from '@/components/motion/reveal'
+import { ScrambleText } from '@/components/motion/scramble-text'
+import { Timeline } from '@/components/motion/timeline'
+import { WordsIn } from '@/components/motion/words-in'
 import { ProjectCard } from '@/components/project-card'
 import { RepoRow } from '@/components/repo-row'
 import { Section } from '@/components/section'
@@ -56,54 +61,58 @@ export default async function Home() {
 
       <main>
         <section className="pt-16 sm:pt-28" aria-labelledby="intro">
-          <p className="text-muted mb-5 font-mono text-xs">
-            Senior fullstack engineer · {profile.location}
-          </p>
-          <h1
+          <ScrambleText
+            text={`Senior fullstack engineer · ${profile.location}`}
+            className="text-muted mb-5 font-mono text-xs"
+          />
+          <WordsIn
             id="intro"
+            text="Software that holds up under load, and under review."
             className="display max-w-[14ch] text-[2.6rem] leading-[1.02] text-balance sm:text-6xl"
-          >
-            Software that holds up under load, and under review.
-          </h1>
-          <p className="text-muted mt-7 max-w-prose text-base leading-relaxed sm:text-lg">
-            I work across the stack: React and TypeScript on the front, Node, Python and Go behind
-            it, AWS underneath. Lately that means breaking a monolith into services, moving an API
-            edge to AWS, and rebuilding a legacy back office in React. The projects below are mine
-            end to end, tested and documented.
-          </p>
-          <ul className="mt-8 flex gap-5 text-sm">
-            <li>
-              <a href={github} className="prose-link">
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href={profile.linkedin} className="prose-link" rel="me noopener">
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a href={`mailto:${profile.email}`} className="prose-link">
-                Email
-              </a>
-            </li>
-          </ul>
+          />
+          <Reveal onMount delay={0.75}>
+            <p className="text-muted mt-7 max-w-prose text-base leading-relaxed sm:text-lg">
+              I work across the stack: React and TypeScript on the front, Node, Python and Go behind
+              it, AWS underneath. Lately that means breaking a monolith into services, moving an API
+              edge to AWS, and rebuilding a legacy back office in React. The projects below are mine
+              end to end, tested and documented.
+            </p>
+            <ul className="mt-8 flex gap-5 text-sm">
+              <li>
+                <a href={github} className="prose-link">
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a href={profile.linkedin} className="prose-link" rel="me noopener">
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${profile.email}`} className="prose-link">
+                  Email
+                </a>
+              </li>
+            </ul>
+          </Reveal>
         </section>
 
         <Section index="01" title="Projects" id="featured">
           <div className="border-line border-t">
             {projects.map((p) => (
-              <ProjectCard key={p.repo} project={p} />
+              <Reveal key={p.repo}>
+                <ProjectCard project={p} />
+              </Reveal>
             ))}
           </div>
         </Section>
 
         <Section index="02" title="Experience" id="experience">
-          <ul className="border-line border-t">
+          <Timeline>
             {experience.map((e) => (
               <ExperienceRow key={e.company} item={e} />
             ))}
-          </ul>
+          </Timeline>
         </Section>
 
         <Section index="03" title="Older work" id="other">
@@ -136,8 +145,8 @@ export default async function Home() {
             Open to senior fullstack roles, remote or in Fortaleza. The quickest way is email:{' '}
             <a href={`mailto:${profile.email}`} className="prose-link">
               {profile.email}
-            </a>
-            , or on{' '}
+            </a>{' '}
+            <CopyEmail email={profile.email} />, or on{' '}
             <a href={profile.linkedin} className="prose-link" rel="me noopener">
               LinkedIn
             </a>

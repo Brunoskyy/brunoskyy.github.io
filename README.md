@@ -47,3 +47,11 @@ the system until you pick one with the button in the header; the choice is
 kept in localStorage and applied by a tiny script in `<head>` before the
 first paint, so there is no flash of the wrong theme. Reduced motion is respected and everything is reachable
 by keyboard, including a skip link.
+
+The motion details are adapted from [ui-layouts](https://www.ui-layouts.com)
+components and live in `src/components/motion/`: the hero words and the
+scrambled eyebrow line, sections that blur in on scroll, the experience
+timeline, the beams in the diagrams, and the spotlight and zoom on the
+screenshots (`project-shot.tsx`). They use `motion`. Anything they hide
+before animating carries `data-reveal`, and a rule in `globals.css` shows it
+again when JavaScript is off or reduced motion is on.

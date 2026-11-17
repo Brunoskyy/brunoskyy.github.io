@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { flushSync } from 'react-dom'
 
 import { nextTheme, parseTheme, THEME_KEY, type ThemeChoice } from '@/lib/theme'
 
@@ -42,10 +43,39 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      onClick={() => {
+      onClick={(e) => {
         const next = nextTheme(current)
-        apply(next)
-        setChoice(next)
+        const swap = () => {
+          apply(next)
+          flushSync(() => setChoice(next))
+        }
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        if (!document.startViewTransition || reduce) {
+          swap()
+          return
+        }
+        // The new theme grows in a circle from the button.
+        const r = e.currentTarget.getBoundingClientRect()
+        const x = r.left + r.width / 2
+        const y = r.top + r.height / 2
+        const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
+        const transition = document.startViewTransition(swap)
+        transition.ready
+          .then(() =>
+            document.documentElement.animate(
+              {
+                clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`],
+              },
+              {
+                duration: 550,
+                easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                pseudoElement: '::view-transition-new(root)',
+              },
+            ),
+          )
+          .catch(() => {
+            // Transition skipped (another one started): the theme is already applied.
+          })
       }}
       aria-label={`${LABEL[current]}. Change theme`}
       title={LABEL[current]}
