@@ -3,18 +3,22 @@ import Image from 'next/image'
 import type { Engagement, Experience } from '@/data/projects'
 
 import { Diagram } from './diagram'
+import { Reveal } from './motion/reveal'
 
 export function ExperienceRow({ item }: { item: Experience }) {
   return (
-    <li className="border-line grid gap-4 border-b py-8 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-x-6">
+    <Reveal
+      as="li"
+      className="border-line grid gap-4 border-b py-8 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-x-6"
+    >
       {item.logo ? (
-        <span className="border-line flex h-12 w-12 items-center justify-center rounded-xl border bg-white p-1">
+        <span className="border-line relative z-10 flex h-12 w-12 items-center justify-center rounded-xl border bg-white p-1">
           <Image src={item.logo} alt="" width={40} height={40} className="h-10 w-10 rounded-lg" />
         </span>
       ) : (
         <span
           aria-hidden="true"
-          className="display bg-surface border-line text-ink flex h-12 w-12 items-center justify-center rounded-xl border text-xl"
+          className="display bg-surface border-line text-ink relative z-10 flex h-12 w-12 items-center justify-center rounded-xl border text-xl"
         >
           {item.monogram}
         </span>
@@ -60,7 +64,7 @@ export function ExperienceRow({ item }: { item: Experience }) {
           </ol>
         )}
       </div>
-    </li>
+    </Reveal>
   )
 }
 

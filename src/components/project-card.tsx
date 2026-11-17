@@ -3,6 +3,8 @@ import Image from 'next/image'
 import type { ProjectView } from '@/lib/github'
 import { formatMonth } from '@/lib/github'
 
+import { ProjectShot } from './project-shot'
+
 export function ProjectCard({ project }: { project: ProjectView }) {
   const status = project.wip ? 'in progress' : project.private ? 'private, ask me for access' : null
   const meta = project.meta
@@ -93,28 +95,7 @@ export function ProjectCard({ project }: { project: ProjectView }) {
       </div>
 
       <div className="min-w-0 self-start md:pt-1">
-        {project.image && (
-          <figure className="frame">
-            <Image
-              src={project.image.src}
-              alt={project.image.alt}
-              width={project.image.width}
-              height={project.image.height}
-              sizes="(min-width: 768px) 520px, 100vw"
-              className={`block h-auto w-full ${project.imageDark ? 'theme-light-only' : ''}`}
-            />
-            {project.imageDark && (
-              <Image
-                src={project.imageDark}
-                alt={project.image.alt}
-                width={project.image.width}
-                height={project.image.height}
-                sizes="(min-width: 768px) 520px, 100vw"
-                className="theme-dark-only block h-auto w-full"
-              />
-            )}
-          </figure>
-        )}
+        {project.image && <ProjectShot image={project.image} imageDark={project.imageDark} />}
       </div>
     </article>
   )
