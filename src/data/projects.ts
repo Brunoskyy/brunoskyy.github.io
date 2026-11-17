@@ -384,7 +384,7 @@ export const experience: Experience[] = [
         client: 'Jointly',
         period: '2023 – 2024',
         about:
-          'A California marketplace for cannabis products, where a chat helps each customer find the right product for what they need.',
+          'A California marketplace for cannabis products, where a chat helps each customer find the right product for what they need. Spark launched publicly in June 2023 and reached shoppers in Los Angeles and Oakland in January 2024.',
         highlights: [
           'Built Spark, the recommendation chat: a GPT agent grounded in the company’s own product documents, running on AWS Lambda and streamed to a React and TypeScript UI over WebSockets.',
           'Made the site’s pages generate from the Strapi CMS through Next.js and webhooks, with content on S3 and the infrastructure in CloudFormation.',
@@ -414,6 +414,12 @@ export const experience: Experience[] = [
           ],
           aside: [{ label: 'Catalog', note: 'Strapi · Shopify' }],
         },
+        links: [
+          {
+            label: 'Spark launch (PR Newswire)',
+            href: 'https://prnewswire.com/news-releases/jointlys-spark-launches-as-the-worlds-first-purposeful-cannabis-consumption-ai-301863392.html',
+          },
+        ],
       },
     ],
   },
